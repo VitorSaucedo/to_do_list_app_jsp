@@ -4,7 +4,7 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests -Dproject.build.sourceEncoding=UTF-8
 
 FROM eclipse-temurin:21-jre-alpine
 
