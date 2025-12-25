@@ -16,8 +16,8 @@ WORKDIR /app
 
 COPY --from=build /app/target/*.war app.war
 
-EXPOSE 8080
+EXPOSE 10000
 
 ENV JAVA_OPTS="-Xmx512m -Xms256m"
 
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -Dspring.profiles.active=prod -Dserver.port=${PORT} -jar app.war"]
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -Dspring.profiles.active=prod -Dserver.port=${PORT:-10000} -jar app.war"]
