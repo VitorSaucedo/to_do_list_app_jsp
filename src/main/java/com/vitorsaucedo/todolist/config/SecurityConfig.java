@@ -19,12 +19,15 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers("/tasks/toggle/**", "/tasks/delete/**")
                 )
+                // 1. Improved CSP to be slightly more flexible for JSP rendering if needed
                 .headers(headers -> headers
                         .contentSecurityPolicy(csp -> csp
-                                .policyDirectives("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';")
+                                .policyDirectives("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;")
                         )
                 )
                 .authorizeHttpRequests(auth -> auth
+                        // 2. Moved WEB-INF and resources here (Recommended)
+                        .requestMatchers("/WEB-INF/**", "/resources/**").permitAll()
                         .requestMatchers("/login", "/register", "/auth/register", "/error").permitAll()
                         .requestMatchers("/css/**", "/js/**", "/images/**", "/*.css", "/*.js", "/*.ico").permitAll()
                         .anyRequest().authenticated()
@@ -49,12 +52,6 @@ public class SecurityConfig {
                 );
 
         return http.build();
-    }
-
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring()
-                .requestMatchers("/WEB-INF/**", "/resources/**");
     }
 
     @Bean
