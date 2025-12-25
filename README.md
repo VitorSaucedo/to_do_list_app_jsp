@@ -1,7 +1,7 @@
 # 📝 Todo List - Gerenciador de Tarefas
 
 ![Java](https://img.shields.io/badge/Java-21-orange)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.0-brightgreen)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.1-brightgreen)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
@@ -9,7 +9,7 @@ Sistema web de gerenciamento de tarefas desenvolvido com Spring Boot, permitindo
 
 ## 🚀 Demo
 
-**[🔗 Acesse a aplicação aqui](https://seu-app.onrender.com)** *(Substitua pelo seu link do Render)*
+**[🔗 Acesse a aplicação aqui](https://to-do-list-app-jsp.onrender.com)**
 
 > ⚠️ **Nota**: A aplicação pode demorar ~30 segundos para carregar na primeira vez (plano gratuito do Render).
 
@@ -28,7 +28,7 @@ Sistema web de gerenciamento de tarefas desenvolvido com Spring Boot, permitindo
 
 ### Backend
 - **Java 21** - Linguagem de programação
-- **Spring Boot 4.0.0** - Framework principal
+- **Spring Boot 4.0.1** - Framework principal
 - **Spring Security** - Autenticação e autorização
 - **Spring Data JPA** - Persistência de dados
 - **Hibernate** - ORM
@@ -56,7 +56,7 @@ Para rodar o projeto localmente, você precisa ter instalado:
 - [Java JDK 21+](https://www.oracle.com/java/technologies/downloads/#java21)
 - [Maven 3.8+](https://maven.apache.org/download.cgi)
 - [Git](https://git-scm.com/)
-- [PostgreSQL 17+](https://www.postgresql.org/download/) (opcional - pode usar H2)
+- [PostgreSQL 17+](https://www.postgresql.org/download/)
 
 ## 🔧 Instalação e Execução Local
 
