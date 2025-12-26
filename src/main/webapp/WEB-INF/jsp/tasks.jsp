@@ -117,8 +117,7 @@
                 <p>Organize seu dia com eficiência</p>
             </div>
             <form action="${pageContext.request.contextPath}/logout" method="post" style="margin: 0;">
-                <!-- Token CSRF (quando habilitar) -->
-                <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <button type="submit" class="logout-btn" title="Sair da conta">
                     <i class="fas fa-sign-out-alt"></i> Sair
                 </button>
@@ -142,6 +141,7 @@
     <!-- Formulário de Nova Tarefa -->
     <section class="input-group">
         <form action="${pageContext.request.contextPath}/tasks/create" method="post" style="display: flex; width: 100%; gap: 10px;">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <input type="text"
                    name="name"
                    placeholder="O que precisa ser feito?"
@@ -206,11 +206,17 @@
 
                 <div class="task-actions">
                     <!-- Toggle Status -->
-                    <a href="${pageContext.request.contextPath}/tasks/toggle/${task.id}"
-                       class="btn-icon text-success"
-                       title="${task.isFinished ? 'Reabrir tarefa' : 'Marcar como concluída'}">
-                        <i class="fas ${task.isFinished ? 'fa-undo' : 'fa-check'}"></i>
-                    </a>
+                    <form action="${pageContext.request.contextPath}/tasks/toggle/${task.id}"
+                          method="post"
+                          style="display: inline; margin: 0;">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                        <button type="submit"
+                                class="btn-icon text-success"
+                                title="${task.isFinished ? 'Reabrir tarefa' : 'Marcar como concluída'}"
+                                style="background: none; border: none; padding: 0;">
+                            <i class="fas ${task.isFinished ? 'fa-undo' : 'fa-check'}"></i>
+                        </button>
+                    </form>
 
                     <!-- Editar -->
                     <button type="button"
@@ -221,12 +227,18 @@
                     </button>
 
                     <!-- Deletar -->
-                    <a href="${pageContext.request.contextPath}/tasks/delete/${task.id}"
-                       class="btn-icon text-danger"
-                       onclick="return confirm('Tem certeza que deseja excluir a tarefa: ${fn:escapeXml(task.name)}?');"
-                       title="Excluir tarefa">
-                        <i class="fas fa-trash"></i>
-                    </a>
+                    <form action="${pageContext.request.contextPath}/tasks/delete/${task.id}"
+                          method="post"
+                          style="display: inline; margin: 0;"
+                          onsubmit="return confirm('Tem certeza que deseja excluir a tarefa: ${fn:escapeXml(task.name)}?');">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                        <button type="submit"
+                                class="btn-icon text-danger"
+                                title="Excluir tarefa"
+                                style="background: none; border: none; padding: 0;">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
                 </div>
             </li>
         </c:forEach>
@@ -261,6 +273,7 @@
         <h2><i class="fas fa-edit"></i> Editar Tarefa</h2>
 
         <form id="editForm" method="post">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <div class="form-group">
                 <label for="editName">Nome da Tarefa *</label>
                 <input type="text"

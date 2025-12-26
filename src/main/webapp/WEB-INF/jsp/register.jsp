@@ -124,6 +124,8 @@
           style="display: flex; flex-direction: column; gap: 15px;"
           onsubmit="return validateForm()">
 
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
         <div class="input-with-icon">
             <i class="fas fa-user"></i>
             <input type="text"
