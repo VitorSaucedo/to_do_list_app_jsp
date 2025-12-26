@@ -24,7 +24,7 @@ public class TaskController {
         List<TaskDto> tasks = taskService.listAll();
         model.addAttribute("tasks", tasks);
         model.addAttribute("activeTab", "all");
-        model.addAttribute("newTask", new TaskDto(null, "", "", false, null)); // Para o form
+        model.addAttribute("newTask", new TaskDto(null, "", "", false, null));
         return "tasks";
     }
 
@@ -61,14 +61,14 @@ public class TaskController {
         return "redirect:/tasks";
     }
 
-    @PatchMapping("/toggle/{id}")
+    @PostMapping("/toggle/{id}")
     public String toggleStatus(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         taskService.changeStatus(id);
         redirectAttributes.addFlashAttribute("successMessage", "Status alterado!");
         return "redirect:/tasks";
     }
 
-    @DeleteMapping("/delete/{id}")
+    @PostMapping("/delete/{id}")
     public String delete(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         taskService.delete(id);
         redirectAttributes.addFlashAttribute("successMessage", "Tarefa removida.");
