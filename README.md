@@ -9,7 +9,7 @@ Sistema web de gerenciamento de tarefas desenvolvido com Spring Boot, permitindo
 
 ## 🚀 Demo
 
-**[🔗 Acesse a aplicação aqui](https://to-do-list-app-jsp.onrender.com)**
+**[🔗 Acesse a aplicação aqui](https://to-do-list-app-jsp-1.onrender.com)**
 
 > ⚠️ **Nota**: A aplicação pode demorar ~30 segundos para carregar na primeira vez (plano gratuito do Render).
 
